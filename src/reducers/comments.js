@@ -1,11 +1,10 @@
-import { SAVE_COMMENT } from '../actions/types';
+import { SAVE_COMMENT } from 'actions/types';
 
-export default function vevo(state = [], action) {
+export default function(state = [], action) {
   switch (action.type) {
     case SAVE_COMMENT:
-      return Object.assign([], state, [
-        action.payload
-      ]);
+      return [...state, action.payload];
+      //return Object.assign([], state, [ action.payload ]);
     default:
       return state;
   }
