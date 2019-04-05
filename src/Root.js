@@ -1,8 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import reduxPromise from 'redux-promise';
 import reducers from 'reducers';
+import stateValidator from 'middlewares/stateValidator';
+import async from 'middlewares/async';
 
 //const composeEnhancer = (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) || compose;
 
@@ -10,7 +11,7 @@ export default ({ children, initialState = {} }) => { // the '= {}' is an initia
   const store = createStore(
     reducers,
     initialState,
-    applyMiddleware(reduxPromise)
+    applyMiddleware(stateValidator, async)
   );
 
   return (
